@@ -1,8 +1,9 @@
 package com.herick.forumHub.controller;
 
+import com.herick.forumHub.domain.topico.DadosCadastroTopico;
 import com.herick.forumHub.domain.topico.TopicoModel;
 import com.herick.forumHub.domain.topico.TopicoService;
-import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,16 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping({"/topicos", "/topico"})
-@AllArgsConstructor
 public class TopicoController {
 
+    @Autowired
     private TopicoService topicoService;
 
     @PostMapping
     @Transactional
-    public ResponseEntity<TopicoModel> criarTopico(@RequestBody TopicoModel topico) { // TODO - Alterar o retorno para uma DTO
-        var topicoSalvo = topicoService.criarTopico(topico);
+    public ResponseEntity<TopicoModel> criarTopico(@RequestBody DadosCadastroTopico dados) { // TODO - Alterar o retorno para uma DTO
+        var topicoSalvo = topicoService.criarTopico(dados);
         return ResponseEntity.status(HttpStatus.CREATED).body(topicoSalvo);
-
     }
 }

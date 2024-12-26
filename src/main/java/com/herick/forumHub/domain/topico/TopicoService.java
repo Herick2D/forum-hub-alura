@@ -1,17 +1,16 @@
 package com.herick.forumHub.domain.topico;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
 public class TopicoService {
 
+    @Autowired
     private TopicoRepository topicoRepository;
 
-
-    public TopicoModel criarTopico(TopicoModel topico) {
+    public TopicoModel criarTopico(DadosCadastroTopico dados) {
+        var topico = new TopicoModel(dados);
         return topicoRepository.save(topico);
 
     }
