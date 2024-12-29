@@ -26,4 +26,14 @@ public class TopicoService {
         var topico = topicoRepository.getReferenceById(id);
         return new DadosTopicoRegistrado(topico);
     }
+
+    public DadosTopicoRegistrado atualizarTopico(Long id, DadosCadastroTopico dados) {
+        var topico = topicoRepository.getReferenceById(id);
+        topico.atualizar(dados);
+        return new DadosTopicoRegistrado(topico);
+    }
+
+    public void deletarTopico(Long id) {
+        topicoRepository.deleteById(id);
+    }
 }

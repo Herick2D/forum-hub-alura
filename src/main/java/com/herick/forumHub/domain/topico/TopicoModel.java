@@ -90,4 +90,20 @@ public class TopicoModel {
     public void setCurso(Long curso) {
         this.curso = curso;
     }
+
+    public void atualizar(DadosCadastroTopico dados) {
+        if (dados.titulo() != null) {
+            this.titulo = dados.titulo();
+        }
+        if (dados.mensagem() != null) {
+            this.mensagem = dados.mensagem();
+        }
+        if (dados.status() != null) {
+            this.status = dados.status();
+        }
+        if (dados.curso() != null) {
+            this.curso = dados.curso();
+        }
+
+    }
 }
