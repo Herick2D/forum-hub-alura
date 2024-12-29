@@ -2,7 +2,7 @@ package com.herick.forumHub.domain.topico;
 
 import java.time.LocalDate;
 
-public record DadosCadastroTopico(
+public record DadosListagemTopico(
         String titulo,
         String mensagem,
         LocalDate dataCriacao,
@@ -10,7 +10,7 @@ public record DadosCadastroTopico(
         Long autor,
         Long curso
 ) {
-    public DadosCadastroTopico(String titulo, String mensagem, EstadoTopico status, Long autor, Long curso) {
-        this(titulo, mensagem, LocalDate.now(), status, autor, curso);
+    public DadosListagemTopico(TopicoModel topico) {
+        this(topico.getTitulo(), topico.getMensagem(), topico.getDataCriacao(), topico.getStatus(), topico.getAutor(), topico.getCurso());
     }
 }
