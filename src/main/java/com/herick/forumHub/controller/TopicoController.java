@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,5 +36,11 @@ public class TopicoController {
     public ResponseEntity<Page<DadosListagemTopico>> listarTodosTopicos(@PageableDefault(size = 10)Pageable paginacao) {
         var topicos = topicoService.listarTodosTopicos(paginacao);
         return ResponseEntity.ok(topicos);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<DadosTopicoRegistrado> buscarTopicoPorId(@PathVariable Long id) {
+        var topico = topicoService.buscarTopicoPorId(id);
+        return ResponseEntity.ok(topico);
     }
 }

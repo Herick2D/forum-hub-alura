@@ -21,4 +21,9 @@ public class TopicoService {
     public Page<DadosListagemTopico> listarTodosTopicos(Pageable paginacao) {
         return topicoRepository.findAllTopicosByDataCriacao(paginacao).map(DadosListagemTopico::new);
     }
+
+    public DadosTopicoRegistrado buscarTopicoPorId(Long id) {
+        var topico = topicoRepository.getReferenceById(id);
+        return new DadosTopicoRegistrado(topico);
+    }
 }
